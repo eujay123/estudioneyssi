@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estúdio [Seu Nome] - Portfólio de Fotografia</title>
+    <style>
+        /* Estilos Gerais */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #FFF;
+            background-color: #000;
+        }
+
+        /* Cores douradas (ajuste conforme o tom que você gostar mais) */
+        :root {
+            --gold-color: #FFD700;
+            --gold-light: #FFEA90;
+            --button-blue: #007BFF;
+        }
+
+        /* Seção Principal (Hero) */
+        .hero-section {
+            display: flex;
+            height: 100vh; /* Usa 100% da altura da tela */
+            width: 100vw; /* Usa 100% da largura da tela */
+        }
+
+        .hero-left, .hero-right {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .hero-left {
+            background-color: #000;
+            overflow: hidden;
+        }
+
+        .hero-right {
+            background-color: #111;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .hero-text {
+            font-size: 2.5em;
+            color: var(--gold-light);
+            margin-bottom: 40px;
+            line-height: 1.4;
+            max-width: 80%;
+        }
+
+        .call-to-action-button {
+    background-color: var(--button-blue);
+    color: #FFF;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* remove o sublinhado */
+    font-weight: bold; /* deixa o texto mais forte, como em um botão */}
+
+        .call-to-action-button:hover {
+            background-color: #b35f00;
+            transform: translateY(-2px);
+        }
+
+        .call-to-action-button .arrow {
+            margin-left: 10px;
+            font-size: 1.5em;
+        }
+
+        /* Estilos do Slideshow */
+        .slideshow-container {
+            position: relative;
+            margin: auto;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .mySlides {
+            display: none;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .mySlides img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Garante que a imagem cubra o espaço */
+            object-position: center; /* Centraliza a imagem */
+            aspect-ratio: 1 / 1; /* Força o formato 1:1 */
+        }
+
+        /* Efeito fade (transição) */
+        .fade {
+          animation-name: fade;
+          animation-duration: 1.5s;
+        }
+
+        @keyframes fade {
+          from {opacity: .4}
+          to {opacity: 1}
+        }
+    </style>
+</head>
+<body>
+
+    <main class="hero-section">
+        <div class="hero-left">
+            <div class="slideshow-container">
+                <div class="mySlides fade">
+                    <img src="media/1.jpg">
+                </div>
+                <div class="mySlides fade">
+                    <img src="media/12.jpg">
+                </div>
+                <div class="mySlides fade">
+                    <img src="media/2.jpg">
+                </div>
+                <div class="mySlides fade">
+                    <img src="media/20.jpg">
+                </div>
+                <div class="mySlides fade">
+                    <img src="media/8.jpg">
+                </div>
+            </div>
+        </div>
+        <div class="hero-right">
+            <p class="hero-text">A tua beleza simplesmente aprimora as nossas lentes, não o contrário.</p>
+            <a href="portifolio.html" class="call-to-action-button">
+    Vamos? <span class="arrow">&#x27A4;</span>
+</a>
+        </div>
+    </main>
+
+    <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+          let i;
+          let slides = document.getElementsByClassName("mySlides");
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+          }
+          slideIndex++;
+          if (slideIndex > slides.length) {slideIndex = 1}
+          slides[slideIndex-1].style.display = "block";
+          setTimeout(showSlides, 3000); // Muda a imagem a cada 3 segundos
+        }
+    </script>
+</body>
+</html>

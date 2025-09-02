@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços - Estúdio Neysi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #000;
+            color: #FFF;
+        }
+
+        :root {
+            --gold-color: #FFD700;
+            --gold-light: #FFEA90;
+            --dark-gray: #1a1a1a;
+        }
+
+        /* Estilo do cabeçalho (navbar) - Reutilizado do seu código */
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 50px;
+            background-color: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            width: calc(100% - 100px);
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+
+        .nav-links li {
+            margin: 0;
+        }
+
+        .nav-links a {
+            color: #FFF;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--gold-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold-color);
+        }
+
+        /* Seção de Serviços */
+        .services-section {
+            padding: 100px 50px 50px;
+            text-align: center;
+        }
+
+        .services-section h1 {
+            font-size: 3.5em;
+            color: var(--gold-color);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .services-section p.subtitle {
+            font-size: 1.2em;
+            color: #E0E0E0;
+            margin-bottom: 60px;
+        }
+
+        /* Contêiner de Pacotes */
+        .packages-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        /* Estilo para cada cartão (retângulo) de pacote */
+        .package-card {
+            background-color: var(--dark-gray);
+            border: 2px solid var(--gold-color);
+            border-radius: 10px;
+            padding: 40px;
+            width: 300px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(255, 215, 0, 0.2);
+        }
+
+        .package-card h3 {
+            font-size: 2em;
+            color: var(--gold-light);
+            margin-top: 0;
+        }
+        
+        .package-card .price {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: var(--gold-color);
+            margin: 20px 0;
+        }
+
+        .package-card ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            margin-top: 30px;
+        }
+        
+        .package-card ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid #333;
+        }
+        
+        .package-card ul li:last-child {
+            border-bottom: none;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background-color: var(--gold-color);
+            color: #000;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-top: 30px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        .contact-btn:hover {
+            background-color: var(--gold-light);
+            color: #000;
+        }
+
+        /* Estilo do footer profissional - Reutilizado do seu código */
+        footer {
+            background-color: #111;
+            color: #E0E0E0;
+            padding: 50px;
+            border-top: 2px solid var(--gold-color);
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-col h4 {
+            color: var(--gold-color);
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .footer-col p, .footer-col ul {
+            font-size: 1em;
+            line-height: 1.6;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-col a {
+            color: #E0E0E0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col a:hover {
+            color: var(--gold-color);
+        }
+
+        .social-links {
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            margin-right: 15px;
+            font-size: 1.5em;
+            color: var(--gold-light);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            margin-top: 40px;
+            border-top: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="portfolio.html">Portfólio</a></li>
+                <li><a href="services.html">Serviços</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="services-section">
+        <h1>Nossos Serviços</h1>
+        <p class="subtitle">Escolha o pacote ideal para eternizar seus momentos mais importantes.</p>
+
+        <h2>Pacotes para Eventos</h2>
+        <div class="packages-container">
+            <div class="package-card">
+                <h3>Golden</h3>
+                <p class="price">MZN 30.000</p>
+                <ul>
+                    <li>Cobertura de 4 horas</li>
+                    <li>Fotógrafo principal</li>
+                    <li>Até 200 fotos editadas</li>
+                    <li>Entrega via galeria online</li>
+                    <li>Ideal para eventos pequenos</li>
+                </ul>
+                <a href="contato.html" class="contact-btn">Solicitar Orçamento</a>
+            </div>
+
+            <div class="package-card">
+                <h3>Platinum</h3>
+                <p class="price">MZN 50.000</p>
+                <ul>
+                    <li>Cobertura de 8 horas</li>
+                    <li>2 fotógrafos</li>
+                    <li>Até 500 fotos editadas</li>
+                    <li>Álbum físico personalizado</li>
+                    <li>Entrega em pen-drive e galeria online</li>
+                </ul>
+                <a href="contato.html" class="contact-btn">Solicitar Orçamento</a>
+            </div>
+
+            <div class="package-card">
+                <h3>Premium</h3>
+                <p class="price">MZN 80.000</p>
+                <ul>
+                    <li>Cobertura completa (12 horas)</li>
+                    <li>2 fotógrafos e 1 assistente</li>
+                    <li>Fotos ilimitadas</li>
+                    <li>Álbum de luxo e vídeo teaser</li>
+                    <li>Entrega em pen-drive, álbum físico e galeria premium</li>
+                </ul>
+                <a href="contato.html" class="contact-btn">Solicitar Orçamento</a>
+            </div>
+        </div>
+
+        <h2>Pacotes para Ensaios Pessoais</h2>
+        <div class="packages-container">
+            <div class="package-card">
+                <h3>Single</h3>
+                <p class="price">MZN 5.000</p>
+                <ul>
+                    <li>Sessão de 1 hora</li>
+                    <li>15 fotos editadas</li>
+                    <li>1 cenário</li>
+                    <li>Entrega via galeria online</li>
+                    <li>Ideal para retratos e portfólios</li>
+                </ul>
+                <a href="contato.html" class="contact-btn">Solicitar Orçamento</a>
+            </div>
+
+            <div class="package-card">
+                <h3>Family</h3>
+                <p class="price">MZN 8.000</p>
+                <ul>
+                    <li>Sessão de 2 horas</li>
+                    <li>30 fotos editadas</li>
+                    <li>2 cenários</li>
+                    <li>Entrega via galeria online</li>
+                    <li>Perfeito para famílias e casais</li>
+                </ul>
+                <a href="contato.html" class="contact-btn">Solicitar Orçamento</a>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>Estúdio Neysi</h4>
+                <p>Nossa missão é capturar a essência da sua história, transformando momentos efêmeros em memórias eternas com um toque de arte e glamour.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Nossos Serviços</h4>
+                <ul>
+                    <li><a href="servicos.html">Casamentos</a></li>
+                    <li><a href="servicos.html">Ensaios Fotográficos</a></li>
+                    <li><a href="servicos.html">Eventos Corporativos</a></li>
+                    <li><a href="servicos.html">Produção de Conteúdo</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Links Importantes</h4>
+                <ul>
+                    <li><a href="#">Termos de Uso</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                    <li><a href="contato.html">Trabalhe Conosco</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contato</h4>
+                <p>E-mail: contato@estudoneysi.com</p>
+                <p>Telefone: (xx) xxxxx-xxxx</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Estúdio Neysi. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</body>
+</html>
