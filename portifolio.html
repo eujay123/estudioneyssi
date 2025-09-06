@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conheça-nos - Estúdio Neysi</title>
+    <title>Conheça-nos - Estúdio Neyssi</title>
     <style>
+        /* Estilos Gerais */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -21,7 +22,7 @@
         /* Estilo do cabeçalho (navbar) */
         .navbar {
             display: flex;
-            justify-content: center; /* Centraliza os links no header */
+            justify-content: center;
             align-items: center;
             padding: 15px 50px;
             background-color: rgba(0, 0, 0, 0.8);
@@ -32,9 +33,8 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
 
-        /* Oculta o logo de texto, pois a distribuição agora é para os links */
         .navbar .logo {
-            display: none; 
+            display: none;
         }
 
         .nav-links {
@@ -42,12 +42,12 @@
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: space-around; /* Distribui uniformemente os links */
-            width: 100%; /* Ocupa toda a largura disponível */
+            justify-content: space-around;
+            width: 100%;
         }
 
         .nav-links li {
-            margin: 0; /* Remove margem lateral individual */
+            margin: 0;
         }
 
         .nav-links a {
@@ -56,7 +56,7 @@
             font-weight: bold;
             transition: color 0.3s ease;
             position: relative;
-            padding: 5px 0; /* Adiciona padding para a linha de hover */
+            padding: 5px 0;
         }
 
         .nav-links a::after {
@@ -92,36 +92,31 @@
             letter-spacing: 2px;
         }
 
-        /* Estilo do item em zig-zag */
-        .zigzag-item {
+        /* Estilo do item de layout */
+        .layout-item {
             display: flex;
             align-items: center;
-            margin-bottom: 80px; /* Espaçamento entre os itens */
+            margin-bottom: 80px;
             background-color: var(--dark-gray);
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-            gap: 40px; /* Adiciona espaçamento entre a imagem e o texto */
+            gap: 40px;
+            /* Garante que a imagem esteja sempre à esquerda, texto à direita */
+            flex-direction: row; 
         }
 
-        /* O nth-child(odd) garante que o primeiro item comece com imagem à esquerda */
-        .zigzag-item:nth-child(odd) {
-            flex-direction: row; /* Imagem à esquerda, texto à direita */
-            background-color: #111; /* Cor de fundo para itens ímpares */
+        .layout-item .content, .layout-item .image-container {
+            flex: 1;
+            padding: 20px;
         }
         
-        /* O nth-child(even) inverte a ordem para criar o zig-zag */
-        .zigzag-item:nth-child(even) {
-            flex-direction: row-reverse; /* Imagem à direita, texto à esquerda */
-            background-color: var(--dark-gray); /* Cor de fundo para itens pares */
+        /* Remove os estilos específicos para itens pares */
+        .layout-item:nth-child(even) {
+            background-color: var(--dark-gray);
         }
 
-        .zigzag-item .content, .zigzag-item .image-container {
-            flex: 1;
-            padding: 20px; /* Ajuste no padding para o conteúdo */
-        }
-
-        .zigzag-item img {
+        .layout-item img {
             max-width: 100%;
             height: auto;
             border-radius: 8px;
@@ -129,17 +124,17 @@
             transition: transform 0.3s ease;
         }
 
-        .zigzag-item img:hover {
+        .layout-item img:hover {
             transform: scale(1.02);
         }
 
-        .zigzag-item h3 {
+        .layout-item h3 {
             font-size: 2em;
             color: var(--gold-light);
             margin-bottom: 20px;
         }
 
-        .zigzag-item p {
+        .layout-item p {
             font-size: 1.1em;
             line-height: 1.7;
             color: #E0E0E0;
@@ -211,6 +206,67 @@
             margin-top: 40px;
             border-top: 1px solid #333;
         }
+
+        /* --- Início dos Estilos Responsivos --- */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+                width: calc(100% - 40px);
+            }
+
+            .nav-links {
+                justify-content: space-between;
+            }
+
+            .about-us-section {
+                padding: 80px 20px 30px;
+            }
+
+            .about-us-section h1 {
+                font-size: 2.5em;
+                margin-bottom: 40px;
+            }
+
+            .layout-item {
+                flex-direction: column; /* Stacks image and text vertically */
+                gap: 20px;
+                padding: 20px;
+            }
+
+            .layout-item .content, .layout-item .image-container {
+                padding: 0;
+            }
+
+            .layout-item h3 {
+                font-size: 1.5em;
+                margin-bottom: 10px;
+            }
+
+            .layout-item p {
+                font-size: 1em;
+                text-align: center; /* Centralizes text on mobile */
+            }
+
+            .footer-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .footer-col {
+                min-width: 100%;
+                text-align: center;
+            }
+
+            .footer-col h4 {
+                margin-bottom: 10px;
+            }
+
+            .social-links a {
+                margin: 0 10px;
+            }
+        }
+        /* --- Fim dos Estilos Responsivos --- */
+
     </style>
 </head>
 <body>
@@ -219,7 +275,7 @@
         <nav class="navbar">
             <ul class="nav-links">
                 <li><a href="index.html">Início</a></li>
-                <li><a href="portfolio.html">Portfólio</a></li>
+                <li><a href="portifolio.html">Portfólio</a></li>
                 <li><a href="services.html">Serviços</a></li>
                 <li><a href="contato.html">Contato</a></li>
             </ul>
@@ -229,47 +285,47 @@
     <main class="about-us-section">
         <h1>Conheça o Estúdio Neysi</h1>
 
-        <div class="zigzag-item">
+        <div class="layout-item">
             <div class="image-container">
                 <img src="media/14.jpg" alt="Equipe do estúdio trabalhando">
             </div>
             <div class="content">
                 <h3>Nossa Paixão pela Arte de Capturar Momentos</h3>
-                <p>No Estúdio Neysi, acreditamos que a fotografia é mais do que apenas um clique; é uma forma de arte. Nossa missão é ir além da imagem, capturando a essência e a beleza genuína de cada história. Fundado com a paixão por eternizar momentos, nosso estúdio é um espaço onde a criatividade se encontra com a técnica para transformar instantes efêmeros em memórias inesquecíveis. Deixe-nos revelar a sua beleza e aprimorar cada detalhe.</p>
+                <p>No Estúdio Neyssi, acreditamos que a fotografia é mais do que apenas um clique; é uma forma de arte. Nossa missão é ir além da imagem, capturando a essência e a beleza genuína de cada história. Fundado com a paixão por eternizar momentos, nosso estúdio é um espaço onde a criatividade se encontra com a técnica para transformar instantes efêmeros em memórias inesquecíveis. Deixe-nos revelar a sua beleza e aprimorar cada detalhe.</p>
             </div>
         </div>
 
-        <div class="zigzag-item">
+        <div class="layout-item">
+            <div class="image-container">
+                <img src="media/20.jpg" alt="Fotógrafo ajustando câmera">
+            </div>
             <div class="content">
                 <h3>A Mágica por Trás das Nossas Lentes</h3>
                 <p>Nosso processo de criação é uma jornada colaborativa. Começamos com uma conversa profunda para entender sua visão e personalidade. A partir daí, planejamos cada detalhe: a luz perfeita, o cenário ideal e a pose que conta a sua história. Durante a sessão, nossa equipe cria um ambiente descontraído, permitindo que você se sinta à vontade para ser autêntico. A pós-produção é onde aplicamos nossa magia, aprimorando as cores e a atmosfera para entregar imagens que superam todas as expectativas.</p>
             </div>
-            <div class="image-container">
-                <img src="media/20.jpg" alt="Fotógrafo ajustando câmera">
-            </div>
         </div>
         
-        <div class="zigzag-item">
+        <div class="layout-item">
             <div class="image-container">
                 <img src="media/8.jpg" alt="Membros da equipe revisando fotos">
             </div>
             <div class="content">
                 <h3>Profissionalismo e Experiência em Cada Clique</h3>
-                <p>Com anos de experiência no mercado, o Estúdio Neysi se tornou uma referência em fotografia de alta qualidade. Nosso time é composto por profissionais altamente qualificados, que dominam as técnicas mais avançadas e os melhores equipamentos do mercado. Para nós, a excelência é a base de tudo, e é por isso que estamos sempre atualizando nosso conhecimento, garantindo que você receba um trabalho impecável e digno de uma galeria.</p>
+                <p>Com anos de experiência no mercado, o Estúdio Neyssi se tornou uma referência em fotografia de alta qualidade. Nosso time é composto por profissionais altamente qualificados, que dominam as técnicas mais avançadas e os melhores equipamentos do mercado. Para nós, a excelência é a base de tudo, e é por isso que estamos sempre atualizando nosso conhecimento, garantindo que você receba um trabalho impecável e digno de uma galeria.</p>
             </div>
         </div>
 
-        <div class="zigzag-item">
+        <div class="layout-item">
+            <div class="image-container">
+                <img src="media/17.jpg" alt="Pessoa utilizando redes sociais com fotos bonitas">
+            </div>
             <div class="content">
                 <h3>O Estilo que Fala a sua Língua</h3>
                 <p>O mundo da fotografia evolui, e nós evoluímos com ele. Estamos sempre de olho nas últimas tendências para criar um estilo que combine com o seu. Entendemos a linguagem das redes sociais e do mundo digital. Nossas fotos não são apenas bonitas; elas são pensadas para engajar, inspirar e se conectar com o seu público. Se você é um influenciador ou criador de conteúdo, estamos aqui para elevar a sua marca visualmente.</p>
             </div>
-            <div class="image-container">
-                <img src="media/17.jpg" alt="Pessoa utilizando redes sociais com fotos bonitas">
-            </div>
         </div>
 
-        <div class="zigzag-item">
+        <div class="layout-item">
             <div class="image-container">
                 <img src="media/2.jpg" alt="Galeria de fotos de eventos sociais">
             </div>
@@ -279,17 +335,17 @@
             </div>
         </div>
 
-        <div class="zigzag-item">
+        <div class="layout-item">
+            <div class="image-container">
+                <img src="media/1.jpg" alt="Retrato artístico de uma pessoa">
+            </div>
             <div class="content">
                 <h3>Retratos que Revelam a Sua Essência</h3>
                 <p>Acreditamos que a beleza não se limita a padrões, mas reside na singularidade de cada indivíduo. Nosso trabalho é realçar essa beleza, seja através de retratos que capturam a alma, ensaios que celebram a personalidade ou campanhas que transmitem a essência de uma marca. Cada sessão é uma jornada para explorar e expressar a individualidade, resultando em imagens que são verdadeiras obras de arte e que refletem o melhor de você.</p>
             </div>
-            <div class="image-container">
-                <img src="media/1.jpg" alt="Retrato artístico de uma pessoa">
-            </div>
         </div>
 
-        <div class="zigzag-item">
+        <div class="layout-item">
             <div class="image-container">
                 <img src="media/19.jpg" alt="Close-up de lentes de câmera e equipamento de estúdio">
             </div>
@@ -322,22 +378,22 @@
                     <li><a href="#">Termos de Uso</a></li>
                     <li><a href="#">Política de Privacidade</a></li>
                     <li><a href="contato.html">Trabalhe Conosco</a></li>
-                    <li><a href="#">Blog</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Contato</h4>
-                <p>E-mail: contato@estudoneysi.com</p>
-                <p>Telefone: (xx) xxxxx-xxxx</p>
+                <p>E-mail: neyssiagenciademodelos@gmail.com</p>
+                <p>Telefone: +258 861 433 978</p>
                 <div class="social-links">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.instagram.com/neyssi_agency_de_modelos/?igsh=amNqa2pkb2Z1dWw%3D#"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61578143076319"><i class="fab fa-facebook-f"></i></a>
+                    <a href="http://tiktok.com/@neyssi_agencia412 "><i class="fab fa-tiktok"></i></a>
+                    <a href="https://wa.me/c/258845162676"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Estúdio Neysi. Todos os direitos reservados.</p>
+            <p>&copy; 2024 Estúdio Neyssi. Todos os direitos reservados.</p>
         </div>
     </footer>
     

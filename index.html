@@ -55,18 +55,19 @@
         }
 
         .call-to-action-button {
-    background-color: var(--button-blue);
-    color: #FFF;
-    padding: 15px 30px;
-    font-size: 1.2em;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    display: flex;
-    align-items: center;
-    text-decoration: none; /* remove o sublinhado */
-    font-weight: bold; /* deixa o texto mais forte, como em um botão */}
+            background-color: var(--button-blue);
+            color: #FFF;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: flex;
+            align-items: center;
+            text-decoration: none; /* remove o sublinhado */
+            font-weight: bold; /* deixa o texto mais forte, como em um botão */
+        }
 
         .call-to-action-button:hover {
             background-color: #b35f00;
@@ -108,14 +109,49 @@
 
         /* Efeito fade (transição) */
         .fade {
-          animation-name: fade;
-          animation-duration: 1.5s;
+            animation-name: fade;
+            animation-duration: 1.5s;
         }
 
         @keyframes fade {
-          from {opacity: .4}
-          to {opacity: 1}
+            from {opacity: .4}
+            to {opacity: 1}
         }
+
+        /* --- Início dos Estilos Responsivos --- */
+        /* Media Query para telas menores (smartphones) */
+        @media (max-width: 768px) {
+            .hero-section {
+                flex-direction: column; /* Altera a direção para empilhar os elementos verticalmente */
+            }
+
+            .hero-left, .hero-right {
+                flex: none; /* Remove a flexbox de 1 para que o tamanho seja ajustável */
+                width: 100%; /* Ocupa 100% da largura da tela */
+            }
+
+            .hero-left {
+                height: 50vh; /* Ajusta a altura da seção de imagem */
+            }
+
+            .hero-right {
+                height: 50vh; /* Ajusta a altura da seção de texto */
+                padding: 10px;
+            }
+
+            .hero-text {
+                font-size: 1.8em; /* Diminui a fonte para melhor visualização em telas pequenas */
+                margin-bottom: 20px;
+                max-width: 90%;
+            }
+
+            .call-to-action-button {
+                font-size: 1em; /* Diminui o botão */
+                padding: 12px 24px;
+            }
+        }
+        /* --- Fim dos Estilos Responsivos --- */
+
     </style>
 </head>
 <body>
@@ -124,27 +160,27 @@
         <div class="hero-left">
             <div class="slideshow-container">
                 <div class="mySlides fade">
-                    <img src="media/1.jpg">
+                    <img src="media/1.jpg" alt="Fotografia de portfólio 1">
                 </div>
                 <div class="mySlides fade">
-                    <img src="media/12.jpg">
+                    <img src="media/12.jpg" alt="Fotografia de portfólio 2">
                 </div>
                 <div class="mySlides fade">
-                    <img src="media/2.jpg">
+                    <img src="media/2.jpg" alt="Fotografia de portfólio 3">
                 </div>
                 <div class="mySlides fade">
-                    <img src="media/20.jpg">
+                    <img src="media/20.jpg" alt="Fotografia de portfólio 4">
                 </div>
                 <div class="mySlides fade">
-                    <img src="media/8.jpg">
+                    <img src="media/8.jpg" alt="Fotografia de portfólio 5">
                 </div>
             </div>
         </div>
         <div class="hero-right">
-            <p class="hero-text">A tua beleza simplesmente aprimora as nossas lentes, não o contrário.</p>
+            <p class="hero-text"> Capture momentos, eternize emoções! </p>
             <a href="portifolio.html" class="call-to-action-button">
-    Vamos? <span class="arrow">&#x27A4;</span>
-</a>
+                Vamos? <span class="arrow">&#x27A4;</span>
+            </a>
         </div>
     </main>
 
